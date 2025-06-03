@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G7 - Recrutamento & Seleção</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e3a8a;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #dbeafe;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            color: #2563eb;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1d4ed8;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e3a8a;
+        }
+
+        .cta-button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: #1d4ed8;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: 1px solid #2563eb;
+            color: #2563eb;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero .highlight {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #1d4ed8;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #2563eb;
+            padding: 12px 32px;
+            border: 2px solid #2563eb;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: #eff6ff;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #1d4ed8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #1d4ed8;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            list-style: none;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: #1d4ed8;
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .mission-card {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .mission-card p {
+            color: white;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: #1d4ed8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid #dbeafe;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: #2563eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: #1d4ed8;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            color: #1d4ed8;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            border: 2px solid #dbeafe;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card blockquote {
+            color: #1d4ed8;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .testimonial-company {
+            color: #2563eb;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            color: #2563eb;
+        }
+
+        .contact-details strong {
+            color: #1e3a8a;
+            display: block;
+        }
+
+        .contact-details span {
+            color: #1d4ed8;
+        }
+
+        .contact-form {
+            background: white;
+            border: 2px solid #dbeafe;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dbeafe;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a8a;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+
+        .footer-section h4 {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            color: #bfdbfe;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e40af;
+            padding-top: 2rem;
+            text-align: center;
+            color: #bfdbfe;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile menu styles */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 0;
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #dbeafe;
+        }
+
+        /* Add Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: modalAppear 0.3s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-icon {
+            font-size: 48px;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .modal h2 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .modal p {
+            color: #1d4ed8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-button:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("PZrwZwq6yxgCdeTdx");
+        })();
+    </script>
+
+    <!-- Add Modal HTML -->
+    <div class="modal-overlay" id="thankYouModal">
+        <div class="modal">
+            <div class="modal-icon">✨</div>
+            <h2>Obrigado!</h2>
+            <p>Agradecemos seu interesse! Entraremos em contato em até 24 horas.</p>
+            <button class="modal-button" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G7</div>
+                    <div class="logo-text">
+                        <h1>G7</h1>
+                        <p>Recrutamento & Seleção</p>
+                    </div>
+                </div>
+
+                <nav>
+                    <a href="#inicio">Início</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#processo">Processo</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+
+                <a href="https://wa.me/5535991595535?text=Oi!%20Tudo%20bem%3F%0A%0ATrabalho%20na%20%5BNome%20da%20Empresa%5D%20e%20estamos%20precisando%20de%20ajuda%20para%20encontrar%20alguns%20profissionais%20qualificados%20para%20nossa%20equipe.%0A%0AVoc%C3%AA%20trabalha%20com%20recrutamento%3F%20Se%20sim%2C%20podemos%20conversar%20sobre%20uma%20poss%C3%ADvel%20parceria%3F%0A%0AObrigada!%20%F0%9F%98%8A" class="btn-primary" target="_blank">Contratar Talentos</a>
+                <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#inicio" onclick="closeMobileMenu()">Início</a>
+            <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+            <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
+            <a href="#processo" onclick="closeMobileMenu()">Processo</a>
+            <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="badge">Especialistas em Talentos</div>
+            <h1>
+                Conectamos <span class="highlight">Talentos</span> às
+                <span class="highlight">Oportunidades</span>
+            </h1>
+            <p>
+                A G7 é sua parceira estratégica em recrutamento e seleção. Encontramos os profissionais ideais para
+                impulsionar o crescimento da sua empresa.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/5535991595535?text=Oi!%20Tudo%20bem%3F%0A%0ATrabalho%20na%20%5BNome%20da%20Empresa%5D%20e%20estamos%20precisando%20de%20ajuda%20para%20encontrar%20alguns%20profissionais%20qualificados%20para%20nossa%20equipe.%0A%0AVoc%C3%AA%20trabalha%20com%20recrutamento%3F%20Se%20sim%2C%20podemos%20conversar%20sobre%20uma%20poss%C3%ADvel%20parceria%3F%0A%0AObrigada!%20%F0%9F%98%8A" class="btn-primary" target="_blank">Contratar Talentos</a>
+                <a href="https://wa.me/5535991595535?text=Ol%C3%A1!%20Boa%20tarde!%0A%0AMeu%20nome%20%C3%A9%20%5BNome%5D%20e%20estou%20em%20busca%20de%20novas%20oportunidades%20profissionais%20na%20%C3%A1rea%20de%20%5Bsua%20%C3%A1rea%5D.%0A%0ATenho%20%5BX%20anos%5D%20de%20experi%C3%AAncia%20em%20%5Bprincipais%20compet%C3%AAncias%5D%20e%20gostaria%20de%20saber%20se%20voc%C3%AA%20tem%20conhecimento%20de%20alguma%20vaga%20que%20se%20encaixe%20no%20meu%20perfil.%0A%0APosso%20enviar%20meu%20curr%C3%ADculo%20para%20an%C3%A1lise%3F%20Estou%20dispon%C3%ADvel%20para%20uma%20conversa%20quando%20for%20conveniente.%0A%0AMuito%20obrigado(a)%20pela%20aten%C3%A7%C3%A3o!" class="btn-outline" target="_blank">Encontrar Vagas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Profissionais Contratados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Empresas Atendidas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Taxa de Sucesso</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Anos de Experiência</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <div class="badge">Sobre a G7</div>
+                    <h2>Excelência em Recrutamento e Seleção</h2>
+                    <p>
+                        A G7 nasceu com o propósito de revolucionar o mercado de recrutamento e seleção no Brasil. Nossa missão
+                        é conectar empresas aos melhores talentos, criando parcerias duradouras e transformando carreiras.
+                    </p>
+                    <ul class="features">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Metodologia exclusiva de seleção
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Equipe especializada e experiente
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Acompanhamento pós-contratação
+                        </li>
+                    </ul>
+                </div>
+                <div class="mission-card">
+                    <h3>Nossa Missão</h3>
+                    <p>
+                        Ser a ponte entre talentos excepcionais e empresas visionárias, promovendo crescimento mútuo e sucesso
+                        sustentável.
+                    </p>
+                    <h3>Nossa Visão</h3>
+                    <p>
+                        Tornar-se referência nacional em recrutamento e seleção, reconhecida pela qualidade, inovação e
+                        resultados excepcionais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Nossos Serviços</div>
+                <h2>Soluções Completas em RH</h2>
+                <p>
+                    Oferecemos uma gama completa de serviços para atender todas as necessidades de recrutamento e seleção da
+                    sua empresa.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Recrutamento Executivo</h3>
+                    <p>Seleção de líderes e executivos para posições estratégicas</p>
+                    <ul class="service-features">
+                        <li>• Headhunting especializado</li>
+                        <li>• Avaliação comportamental</li>
+                        <li>• Mapeamento de mercado</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Seleção Técnica</h3>
+                    <p>Profissionais especializados para áreas técnicas</p>
+                    <ul class="service-features">
+                        <li>• Testes técnicos específicos</li>
+                        <li>• Avaliação de competências</li>
+                        <li>• Entrevistas estruturadas</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏆</div>
+                    <h3>Consultoria em RH</h3>
+                    <p>Estratégias personalizadas para otimizar processos</p>
+                    <ul class="service-features">
+                        <li>• Análise de cargos e salários</li>
+                        <li>• Estruturação de processos</li>
+                        <li>• Treinamento de equipes</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⏰</div>
+                    <h3>Recrutamento Express</h3>
+                    <p>Soluções rápidas para necessidades urgentes</p>
+                    <ul class="service-features">
+                        <li>• Processo acelerado</li>
+                        <li>• Banco de talentos ativo</li>
+                        <li>• Resposta em 48h</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Terceirização de RH</h3>
+                    <p>Gestão completa dos processos de recrutamento</p>
+                    <ul class="service-features">
+                        <li>• Gestão end-to-end</li>
+                        <li>• Relatórios detalhados</li>
+                        <li>• Acompanhamento contínuo</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⭐</div>
+                    <h3>Assessment Center</h3>
+                    <p>Avaliação completa de competências e potencial</p>
+                    <ul class="service-features">
+                        <li>• Dinâmicas de grupo</li>
+                        <li>• Testes psicológicos</li>
+                        <li>• Relatório detalhado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="processo" class="process">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Nosso Processo</div>
+                <h2>Metodologia Comprovada</h2>
+                <p>
+                    Um processo estruturado e eficiente que garante os melhores resultados para sua empresa.
+                </p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Briefing</h3>
+                    <p>
+                        Entendemos suas necessidades, cultura organizacional e perfil ideal do candidato.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Sourcing</h3>
+                    <p>
+                        Mapeamos e atraímos os melhores talentos do mercado através de múltiplos canais.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Seleção</h3>
+                    <p>
+                        Aplicamos nossa metodologia exclusiva de avaliação técnica e comportamental.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Apresentação</h3>
+                    <p>
+                        Apresentamos apenas os candidatos mais qualificados com relatório detalhado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Depoimentos</div>
+                <h2>O Que Nossos Clientes Dizem</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <blockquote>
+                        "A G7 encontrou exatamente o perfil que precisávamos. O processo foi rápido e eficiente. Recomendo!"
+                    </blockquote>
+                    <div class="testimonial-author">Maria Silva</div>
+                    <div class="testimonial-company">Diretora de RH - TechCorp</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <blockquote>
+                        "Profissionalismo excepcional. A equipe da G7 entendeu perfeitamente nossas necessidades."
+                    </blockquote>
+                    <div class="testimonial-author">João Santos</div>
+                    <div class="testimonial-company">CEO - InnovaTech</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <blockquote>
+                        "Parceria estratégica que transformou nosso processo de contratação. Resultados excepcionais!"
+                    </blockquote>
+                    <div class="testimonial-author">Ana Costa</div>
+                    <div class="testimonial-company">Gerente de Pessoas - StartupXYZ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Contato</div>
+                <h2>Vamos Conversar?</h2>
+                <p>
+                    Entre em contato conosco e descubra como podemos ajudar sua empresa a encontrar os melhores talentos.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <strong>Telefone</strong>
+                            <span>(35) 99159-5535</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <strong>E-mail</strong>
+                            <span>g7recrutamentoeselecao@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <strong>Endereço</strong>
+                            <span>Extrema, MG - Brasil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Solicite um Orçamento</h3>
+                    <p>Preencha o formulário e entraremos em contato em até 24 horas.</p>
+                    
+                    <form onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="empresa">Nome da Empresa</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Digite o nome da sua empresa" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos sobre suas necessidades de recrutamento..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="footer-logo">G7</div>
+                        <span>G7 Recrutamento</span>
+                    </div>
+                    <p>Conectando talentos às melhores oportunidades do mercado.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li>Recrutamento Executivo</li>
+                        <li>Seleção Técnica</li>
+                        <li>Consultoria em RH</li>
+                        <li>Assessment Center</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li>Sobre Nós</li>
+                        <li>Nossa Equipe</li>
+                        <li>Casos de Sucesso</li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>(35) 99159-5535</li>
+                        <li>g7recrutamentoeselecao@gmail.com</li>
+                        <li>Extrema, MG - Brasil</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 G7 Recrutamento & Seleção. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.remove('active');
+        }
+
+        // Add Modal Functions
+        function showModal() {
+            const modal = document.getElementById('thankYouModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('thankYouModal');
+            modal.style.display = 'none';
+        }
+
+        // Update Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            const templateParams = {
+                from_name: data.empresa,
+                to_name: "Administrador",
+                from_email: data.email,
+                phone: data.telefone,
+                message: `
+                    Empresa: ${data.empresa}
+                    Email: ${data.email}
+                    Telefone: ${data.telefone}
+                    
+                    Mensagem:
+                    ${data.mensagem}
+                `
+            };
+
+            console.log("Enviando dados:", templateParams);
+
+            emailjs.send("service_gcs41j8", "template_zou38df", templateParams)
+            .then(
+                function(response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                    showModal();
+                    event.target.reset();
+                },
+                function(error) {
+                    console.log("FAILED...", error);
+                    alert("Erro ao enviar mensagem. Por favor, tente novamente mais tarde. Erro: " + error.text);
+                }
+            );
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            
+            if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
